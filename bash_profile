@@ -13,6 +13,7 @@ alias stk='rlwrap stk-simply'
 alias .='cd ..'
 alias ls='ls -a'
 alias dot='cd ~/dotfiles'
+alias haskell='ghci'
 function aquamacs
 {
  # Create the files as needed -- not as good as raw emacs, but acceptable
