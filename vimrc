@@ -1,4 +1,4 @@
-set nocompatible
+set nocompatible 
 set backspace=2
 set autoread
 set nu sts=4 sw=4 ts=4 ai fen expandtab hlsearch wmh=0 t_Co=256 laststatus=2 
