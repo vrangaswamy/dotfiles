@@ -10,7 +10,7 @@ alias stk='rlwrap -pBlue -c stk-simply'
 alias .='cd ..'
 alias ls='ls -a'
 alias dot='cd ~/dotfiles'
-alias c='ssh cs70-cd@star.cs.berkeley.edu'
+alias c='ssh cs70-cd@hive3.cs.berkeley.edu'
 function aquamacs
 {
  # Create the files as needed -- not as good as raw emacs, but acceptable
