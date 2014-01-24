@@ -3,15 +3,14 @@
 PATH="/Library/Frameworks/Python.framework/Versions/3.2/bin:${PATH}"
 export PATH
 
-alias as='ssh -X cs61as-ra@torus.cs.berkeley.edu'
-#alias c='ssh -X cs61c-qg@torus.cs.berkeley.edu'
 alias desk='cd ~/Desktop'
 alias drop='cd ~/Dropbox'
 alias sch='cd ~/Dropbox/School/Spring\ 2014'
-alias stk='rlwrap stk-simply'
+alias stk='rlwrap -pBlue -c stk-simply'
 alias .='cd ..'
 alias ls='ls -a'
 alias dot='cd ~/dotfiles'
+alias c='ssh cs70-cd@star.cs.berkeley.edu'
 function aquamacs
 {
  # Create the files as needed -- not as good as raw emacs, but acceptable
