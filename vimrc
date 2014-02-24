@@ -23,10 +23,9 @@ set grepprg=grep\ -nH\ $*
 set ignorecase
 set smartcase
 
-" Who doesn't like autoindent?
  set autoindent
 
- " Spaces are better than a tab character
+"Spaces are better than a tab character
  set expandtab
  set smarttab
 
@@ -95,4 +94,3 @@ nmap <silent> <A-Up> :wincmd k<CR>
 nmap <silent> <A-Down> :wincmd j<CR>
 nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
-
