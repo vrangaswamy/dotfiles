@@ -1,3 +1,9 @@
+execute pathogen#infect()
+call pathogen#helptags()
+call pathogen#runtime_append_all_bundles()
+autocmd vimenter * NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+nnoremap <Leader>g <C-w><C-w>
 set nocompatible 
 set backspace=2
 set autoread
@@ -10,12 +16,17 @@ set hidden
 set hlsearch
 set incsearch
 set number
+set undolevels=1000
+set nobackup
+set noswapfile
 
 set nocompatible
 
 "some syntax hilighting
 filetype on
 filetype plugin on
+filetype plugin indent on
+autocmd filetype python set expandtab
 syntax enable
 set grepprg=grep\ -nH\ $*
 
@@ -34,8 +45,8 @@ set smartcase
  set softtabstop=2
 
 "turn off beeps
-set noerrorbells 
-set vb t_vb=
+set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
 
 "Bracket autocomplete
 "inoremap { {<CR>}<Esc>O<TAB>
@@ -43,7 +54,7 @@ set vb t_vb=
 
 set showmatch
 set matchpairs+=<:>         " show matching <> (html mainly) as well
-
+set matchpairs+=$:$
 filetype on
 filetype indent on
 filetype plugin on
@@ -59,6 +70,7 @@ syntax on
 "colorscheme zellner
 
 colorscheme desert
+"colorscheme solarized
 
 "colorscheme summerfruit256
 "colorscheme vividchalk
