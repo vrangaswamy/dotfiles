@@ -1,24 +1,26 @@
 # Setting PATH for Python 3.2
 # The orginal version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.2/bin:${PATH}"
+#PATH="/Library/Frameworks/Python.framework/Versions/3.2/bin:${PATH}"
 export PATH
 export ROOT="/"
 export SCHOOL='/Users/Vivek/Dropbox/School'
 export PAGER=cat
 set -o vi
 set -o ignoreeof
+set -o noclobber
 
 alias desk='cd $HOME/Desktop'
+alias rm='rm -i'
 alias drop='cd $HOME/Dropbox'
 alias sch='cd $SCHOOL/Spring_2014'
-alias stk='rlwrap -pBlue -c stk-simply'
+alias stkw='rlwrap -pBlue -c stk-simply'
 alias .='cd ..'
 alias ls='ls -AF'
 alias dot='cd $HOME/dotfiles'
-alias julia="exec '/Applications/Julia-0.2.1.app/Contents/Resources/julia/bin/julia'"
 alias fortune='fortune -a'
 alias as='cd $SCHOOL/Old/Fall_2013/61AS/61AS'
-alias vim='/usr/local/bin/mvim'
+alias vim='mvim'
+alias find_users='for host in quasar nova pulsar ; do ssh $host 'who'; done | cut -d" " -f1 | sort -u '
 PS1='[$PWD] '
 function aquamacs
 {
@@ -31,8 +33,7 @@ function aquamacs
 }
 
 
-export PATH=/usr/local/sbin:$PATH
-export PATH=/usr/local/bin:$PATH
+#export PATH=/usr/local/bin:$PATH
 
 # added by Anaconda 1.9.1 installer
-export PATH="/Users/Vivek/anaconda/bin:$PATH"
+#export PATH="/Users/Vivek/anaconda/bin:$PATH"

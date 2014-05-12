@@ -34,15 +34,15 @@ set grepprg=grep\ -nH\ $*
 set ignorecase
 set smartcase
 
- set autoindent
+set autoindent
 
 "Spaces are better than a tab character
- set expandtab
- set smarttab
+set expandtab
+set smarttab
 
 "tabs are 2 spaces
- set shiftwidth=2
- set softtabstop=2
+set shiftwidth=2
+set softtabstop=2
 
 "turn off beeps
 set noerrorbells visualbell t_vb=
@@ -106,3 +106,7 @@ nmap <silent> <A-Up> :wincmd k<CR>
 nmap <silent> <A-Down> :wincmd j<CR>
 nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
+
+let g:pymode = 1
+let g:pymode_warnings = 1
+let g:pymode_trim_whitespaces = 1
