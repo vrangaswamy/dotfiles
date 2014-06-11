@@ -4,7 +4,9 @@
 export PATH
 export ROOT="/"
 export SCHOOL='/Users/Vivek/Dropbox/School'
+export a='/Users/Vivek/Dropbox/School/Old/Fall_2013/61AS/61AS'
 export PAGER=cat
+export LSCOLORS=Exfxcxdxbxegedabagacad
 set -o vi
 set -o ignoreeof
 set -o noclobber
@@ -15,12 +17,12 @@ alias drop='cd $HOME/Dropbox'
 alias sch='cd $SCHOOL/Spring_2014'
 alias stkw='rlwrap -pBlue -c stk-simply'
 alias .='cd ..'
-alias ls='ls -AF'
+alias ls='ls -AGF'
 alias dot='cd $HOME/dotfiles'
 alias fortune='fortune -a'
-alias as='cd $SCHOOL/Old/Fall_2013/61AS/61AS'
+alias as='cd $a'
 alias vim='mvim'
-alias find_users='for host in quasar nova pulsar ; do ssh $host 'who'; done | cut -d" " -f1 | sort -u '
+alias find_users='for host in quasar nova pulsar torus ; do ssh $host 'who'; done | cut -d" " -f1 | sort -u '
 PS1='[$PWD] '
 function aquamacs
 {
