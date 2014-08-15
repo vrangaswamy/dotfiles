@@ -1,3 +1,4 @@
+(show-paren-mode 1)
 ;;  .emacs --- cs61a class master emacs startup file
 
 ;;  Copyright (C) 1998 Regents of California

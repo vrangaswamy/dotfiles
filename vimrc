@@ -2,12 +2,12 @@ execute pathogen#infect()
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
 autocmd vimenter * NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-nnoremap <Leader>g <C-w><C-w>
-set nocompatible 
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType "== "primary") | q | endif
+"nnoremap <Leader>g <C-n>
+set nocompatible
 set backspace=2
 set autoread
-set nu sts=4 sw=4 ts=4 ai fen expandtab hlsearch wmh=0 t_Co=256 laststatus=2 
+set nu sts=4 sw=4 ts=4 ai fen expandtab hlsearch wmh=0 t_Co=256 laststatus=2
 set cinoptions=:0,l1,t0,g0
 set nocsverb
 set smartcase
@@ -21,6 +21,10 @@ set nobackup
 set noswapfile
 
 set nocompatible
+
+let mapleader = ","
+nnoremap <leader><space> :noh<cr>
+
 
 "some syntax hilighting
 filetype on
@@ -54,13 +58,10 @@ autocmd GUIEnter * set visualbell t_vb=
 
 set showmatch
 set matchpairs+=<:>         " show matching <> (html mainly) as well
-set matchpairs+=$:$
+"set matchpairs+=$:$
 filetype on
 filetype indent on
 filetype plugin on
-
-"set statusline=%<%f\%h%m%r%=%-20.(line=%l\ \ col=%c%V\ \ totlin=%L%)\ \ \%h%m%r%=%-40(bytval=0x%B,%n%Y%)\%P
-"set tags=./tags,tags,~/.tags.cocoa,~/projects/current/tags
 
 syntax on
 
@@ -96,8 +97,23 @@ function! Tab_Or_Complete()
 set wildmode=longest:full
 set wildmenu
 
+"handle long lines correctly
 set wrap
-set linebreak
+set textwidth=79
+set formatoptions=qrn1
+set colorcolumn=85
+
+"set linebreak
+
+
+"save when losing focus
+au FocusLost * :wa
+
+"<leader>w gets rid of trailing whitespace
+nnoremap <leader>w :%s/\s\+$//<cr>:let @/=''<CR>
+
+"maps 'jj' to escape. POTENTIALLY HARMFUL
+inoremap jj <ESC>
 
 map <F7> <Esc>:setlocal spell spelllang=en_us
 map <S-F7> <Esc>:setlocal nospell
@@ -110,3 +126,21 @@ nmap <silent> <A-Right> :wincmd l<CR>
 let g:pymode = 1
 let g:pymode_warnings = 1
 let g:pymode_trim_whitespaces = 1
+let g:syntastic_quiet_messages = { "level": "warnings",
+                                     \ "type":  "style"}
+let g:syntastic_python_checkers = ['pep8']
+let $PATH = $PATH . ':' . expand("~/.cabal/bin")
+
+"configure vim for python
+autocmd BufRead *.py nmap <C-p> :!python %
+autocmd BufRead *.py nmap <C-i> :!python -i %
+
+autocmd BufRead *.py set tabstop=4
+autocmd BufRead *.py set nowrap
+autocmd BufRead *.py set go+=b
+
+"and for java
+autocmd BufRead *.java nmap <C-p> :!javac -g *.java
+
+"compile latex
+autocmd BufRead *.tex nmap <C-p> :!pdflatex % 
