@@ -143,4 +143,7 @@ autocmd BufRead *.py set go+=b
 autocmd BufRead *.java nmap <C-p> :!javac -g *.java
 
 "compile latex
-autocmd BufRead *.tex nmap <C-p> :!pdflatex % 
+autocmd BufRead *.tex nmap <C-p> :!pdflatex %
+
+"open html files
+autocmd BufRead *.html nmap <C-p> :!open %
