@@ -30,7 +30,7 @@ nnoremap <leader><space> :noh<cr>
 filetype on
 filetype plugin on
 filetype plugin indent on
-autocmd filetype python set expandtab
+"autocmd filetype python set expandtab
 syntax enable
 set grepprg=grep\ -nH\ $*
 
@@ -45,7 +45,7 @@ set expandtab
 set smarttab
 
 "tabs are 2 spaces
-set shiftwidth=2
+set shiftwidth=2 
 set softtabstop=2
 
 "turn off beeps
@@ -101,7 +101,7 @@ set wildmenu
 set wrap
 set textwidth=79
 set formatoptions=qrn1
-set colorcolumn=85
+set colorcolumn=80
 
 "set linebreak
 
@@ -112,7 +112,7 @@ au FocusLost * :wa
 "<leader>w gets rid of trailing whitespace
 nnoremap <leader>w :%s/\s\+$//<cr>:let @/=''<CR>
 
-"maps 'jj' to escape. POTENTIALLY HARMFUL
+"maps 'jj' to escape
 inoremap jj <ESC>
 
 map <F7> <Esc>:setlocal spell spelllang=en_us
@@ -123,21 +123,24 @@ nmap <silent> <A-Down> :wincmd j<CR>
 nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
 
-let g:pymode = 1
-let g:pymode_warnings = 1
-let g:pymode_trim_whitespaces = 1
-let g:syntastic_quiet_messages = { "level": "warnings",
-                                     \ "type":  "style"}
-let g:syntastic_python_checkers = ['pep8']
+"let g:pymode = 1
+"let g:pymode_warnings = 1
+"let g:pymode_trim_whitespaces = 1
+"let g:syntastic_quiet_messages = { "level": "warnings",
+                                     "\ "type":  "style"}
+"let g:syntastic_python_checkers = ['pep8']
 let $PATH = $PATH . ':' . expand("~/.cabal/bin")
 
 "configure vim for python
-autocmd BufRead *.py nmap <C-p> :!python %
-autocmd BufRead *.py nmap <C-i> :!python -i %
+"autocmd BufRead *.py nmap <C-p> :!python %
+"autocmd BufRead *.py nmap <C-i> :!python -i %
 
-autocmd BufRead *.py set tabstop=4
-autocmd BufRead *.py set nowrap
-autocmd BufRead *.py set go+=b
+"autocmd BufRead *.py set tabstop=4
+"autocmd BufRead *.py set nowrap
+"autocmd BufRead *.py set go+=b
+
+"python testing
+autocmd BufRead *.rst nmap <C-p> :!python -m doctest -v %
 
 "and for java
 autocmd BufRead *.java nmap <C-p> :!javac -g *.java
@@ -147,3 +150,40 @@ autocmd BufRead *.tex nmap <C-p> :!pdflatex %
 
 "open html files
 autocmd BufRead *.html nmap <C-p> :!open %
+
+" Indent Python in the Google way.
+
+"setlocal indentexpr=GetGooglePythonIndent(v:lnum)
+
+let s:maxoff = 50 " maximum number of lines to look backwards.
+
+"function GetGooglePythonIndent(lnum)
+
+  "" Indent inside parens.
+  "" Align with the open paren unless it is at the end of the line.
+  "" E.g.
+  ""   open_paren_not_at_EOL(100,
+  ""                         (200,
+  ""                          300),
+  ""                         400)
+  ""   open_paren_at_EOL(
+  ""       100, 200, 300, 400)
+  "call cursor(a:lnum, 1)
+  "let [par_line, par_col] = searchpairpos('(\|{\|\[', '', ')\|}\|\]', 'bW',
+        "\ "line('.') < " . (a:lnum - s:maxoff) . " ? dummy :"
+        "\ . " synIDattr(synID(line('.'), col('.'), 1), 'name')"
+        "\ . " =~ '\\(Comment\\|String\\)$'")
+  "if par_line > 0
+    "call cursor(par_line, 1)
+    "if par_col != col("$") - 1
+      "return par_col
+    "endif
+  "endif
+
+  "" Delegate the rest to the original function.
+  "return GetPythonIndent(a:lnum)
+
+"endfunction
+
+"let pyindent_nested_paren="&sw*2"
+"let pyindent_open_paren="&sw*2"

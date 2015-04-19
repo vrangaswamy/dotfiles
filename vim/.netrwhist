@@ -1,8 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/Users/Vivek/physics'
 let g:netrw_dirhist_2='/Users/Vivek/dotfiles'
 let g:netrw_dirhist_3='/Users/Vivek/dotfiles/vim'
 let g:netrw_dirhist_4='/Users/Vivek/physics'
 let g:netrw_dirhist_5='/Users/Vivek/Dropbox/School/Old/Fall_2013/cs61as/solutions'
 let g:netrw_dirhist_6='/Users/Vivek/Dropbox/School/Summer_2014/61as/finals'
+let g:netrw_dirhist_7='/Users/Vivek/Dropbox/61as/repo/cron/deadlines'
+let g:netrw_dirhist_8='/Users/Vivek/dotfiles/vim'
