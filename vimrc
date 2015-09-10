@@ -99,7 +99,8 @@ set wildmenu
 
 "handle long lines correctly
 set wrap
-set textwidth=79
+set tw=80
+autocmd BufRead,BufNewFile *.txt,*.md,*.text setlocal fo+=a
 set formatoptions=qrn1
 set colorcolumn=80
 
@@ -132,8 +133,8 @@ nmap <silent> <A-Right> :wincmd l<CR>
 let $PATH = $PATH . ':' . expand("~/.cabal/bin")
 
 "configure vim for python
-"autocmd BufRead *.py nmap <C-p> :!python %
-"autocmd BufRead *.py nmap <C-i> :!python -i %
+autocmd BufRead *.py nmap <C-p> :!python %
+autocmd BufRead *.py nmap <C-i> :!python -i %
 
 "autocmd BufRead *.py set tabstop=4
 "autocmd BufRead *.py set nowrap

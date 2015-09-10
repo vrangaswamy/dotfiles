@@ -509,3 +509,9 @@ go to Scheme buffer."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(setq load-path (cons "~/src/emacspeak/lisp" load-path))
+(setq emacspeak-directory "~/src/emacspeak")
+(setq dtk-program "mac")
+(load-file "~/src/emacspeak/lisp/mac-voices.el")
+(setq mac-default-speech-rate 300)
+(load-file "~/src/emacspeak/lisp/emacspeak-setup.el")
