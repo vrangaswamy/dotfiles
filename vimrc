@@ -84,15 +84,15 @@ let maplocalleader = ","
 let g:xml_syntax_folding=1
 
 "Auto-complete
-function! Tab_Or_Complete()
-  if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
-      return "\<C-N>"
-        else
-            return "\<Tab>"
-              endif
-              endfunction
+"function! Tab_Or_Complete()
+  "if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+      "return "\<C-N>"
+        "else
+            "return "\<Tab>"
+              "endif
+              "endfunction
 
-              inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
+              "inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 
 set wildmode=longest:full
 set wildmenu
@@ -100,7 +100,7 @@ set wildmenu
 "handle long lines correctly
 set wrap
 set tw=80
-autocmd BufRead,BufNewFile *.txt,*.md,*.text setlocal fo+=a
+"autocmd BufRead,BufNewFile *.txt,*.text setlocal fo+=a
 set formatoptions=qrn1
 set colorcolumn=80
 
@@ -133,15 +133,15 @@ nmap <silent> <A-Right> :wincmd l<CR>
 let $PATH = $PATH . ':' . expand("~/.cabal/bin")
 
 "configure vim for python
-autocmd BufRead *.py nmap <C-p> :!python %
-autocmd BufRead *.py nmap <C-i> :!python -i %
+"autocmd BufRead *.py nmap <C-p> :!python %
+"autocmd BufRead *.py nmap <C-i> :!python -i %
 
 "autocmd BufRead *.py set tabstop=4
 "autocmd BufRead *.py set nowrap
 "autocmd BufRead *.py set go+=b
 
 "python testing
-autocmd BufRead *.rst nmap <C-p> :!python -m doctest -v %
+"autocmd BufRead *.rst nmap <C-p> :!python -m doctest -v %
 
 "and for java
 autocmd BufRead *.java nmap <C-p> :!javac -g *.java
@@ -188,3 +188,4 @@ let s:maxoff = 50 " maximum number of lines to look backwards.
 
 "let pyindent_nested_paren="&sw*2"
 "let pyindent_open_paren="&sw*2"
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown

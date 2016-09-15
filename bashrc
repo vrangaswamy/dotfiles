@@ -4,7 +4,7 @@
 export PATH
 export ROOT="/"
 export SCHOOL='/Users/Vivek/Dropbox/School'
-export REPO='/Users/Vivek/Dropbox/61as/core'
+export REPO='/Users/Vivek/Documents/61as/core'
 export A='/Users/Vivek/Dropbox/61as/fa14'
 export LSCOLORS=Exfxcxdxbxegedabagacad
 set -o vi
@@ -28,6 +28,8 @@ alias py='python3'
 alias bin='cd $HOME/bin'
 alias vim='mvim'
 alias gc='git commit'
+alias gco='git checkout'
+alias stk='rlwrap stk-simply'
 PS1='[$PWD] '
 
 function aquamacs
@@ -55,11 +57,11 @@ export PATH=~/Downloads/scala-2.11.6/bin:$PATH
 #export PATH=/Applications/Julia-0.2.1.app/Contents/Resources/julia/bin/:$PATH
 
 #us
-alias u='cd .. && ls'
-alias uu='cd ../.. && ls'
-alias uuu='cd ../../.. && ls'
-alias uuuu='cd ../../../.. && ls'
-alias uuuuu='cd ../../../../.. && ls'
+#alias u='cd .. && ls'
+#alias uu='cd ../.. && ls'
+#alias uuu='cd ../../.. && ls'
+#alias uuuu='cd ../../../.. && ls'
+#alias uuuuu='cd ../../../../.. && ls'
 
 #export PATH=/path/to/dir:$PATH
 
@@ -71,3 +73,33 @@ alias uuuuu='cd ../../../../.. && ls'
 alias gs='git branch; git status'
 alias ezsh='vim ~/.bashrc; source ~/.bashrc'
 export PATH=$PATH:/Applications/Racket\ v6.2.1/bin
+export PATH=$PATH:/Users/Vivek/Downloads/scala-2.11.7/bin
+function repeated_char {
+if [ $2 == 0 ]
+then
+  return
+fi
+result=""
+for i in `seq 1 $2`
+do
+  result="$1$result"
+done
+echo $result
+}
+
+
+function repeated_cd {
+num=$1
+i=0
+while [ $i -lt $num ]
+do
+  cd ..
+  i=$[$i+1]
+done
+}
+
+for i in {1..9}
+do
+  num=`repeated_char u $i`
+  alias $num="repeated_cd $i"
+done
